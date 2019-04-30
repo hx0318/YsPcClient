@@ -80,8 +80,8 @@ void LoginDialog::slot_PButtonLogin_clicked()
 		ui->PButtonLogin->setEnabled(false);
 		NAManager *nam = new NAManager();
 		connect(nam,SIGNAL(signal_reply_finished(QJsonObject,void*)),this,SLOT(slot_login_reply(QJsonObject,void*)));
-		QByteArray ba = QCryptographicHash::hash(QString("password=%1&type=1&username=%2&key=AAS").arg(ui->EditPassword->text()).
-												 arg(ui->EditUser->text()).toUtf8(), QCryptographicHash::Md5);
+        QByteArray ba = QCryptographicHash::hash(QString("password=%1&type=1&username=%2&key=AAS").arg(ui->EditPassword->text()).arg(ui->EditUser->text()).toUtf8(),
+                                                 QCryptographicHash::Md5);
 		QString md5(ba.toHex().toUpper());
 		QJsonObject json;
 		json.insert("username", ui->EditUser->text());
