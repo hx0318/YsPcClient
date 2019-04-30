@@ -88,8 +88,7 @@ void LoginDialog::slot_PButtonLogin_clicked()
 		json.insert("password", ui->EditPassword->text());
 		json.insert("type", "1");
 		json.insert("sign", md5);
-		QString strParam = QString("service=teacher&method=login&params=%1").arg(QString(QJsonDocument(json).
-																						 toJson(QJsonDocument::Compact)));
+		QString strParam = QString("service=teacher&method=login&params=%1").arg(QString(QJsonDocument(json).toJson(QJsonDocument::Compact)));
 		nam->SendRequest(QString("http://%1/aas/service/sys/execute").arg(Global::g_ServerIp),strParam);
 	}
 	else if(ui->PButtonLogin->text() == "重置密码")
